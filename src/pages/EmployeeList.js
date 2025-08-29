@@ -1,4 +1,3 @@
-// src/pages/EmployeeList.jsx
 import React, { useState } from "react";
 import EmployeeTable from "../components/EmployeeTable";
 import EmployeeForm from "../components/EmployeeForm";
@@ -12,11 +11,9 @@ function EmployeeList({ employees, setEmployees }) {
 
   const handleAddOrUpdate = (emp) => {
     if (editing) {
-      // ✅ update existing employee
       setEmployees(employees.map((e) => (e.id === emp.id ? emp : e)));
       setEditing(null);
     } else {
-      // ✅ add new employee
       setEmployees([...employees, emp]);
     }
     setShowForm(false);
@@ -27,8 +24,8 @@ function EmployeeList({ employees, setEmployees }) {
   };
 
   const handleEdit = (emp) => {
-    setEditing(emp);     // set data for editing
-    setShowForm(true);   // open the form
+    setEditing(emp);     
+    setShowForm(true);   
   };
 
   const filtered = employees.filter((e) => {
@@ -45,13 +42,13 @@ function EmployeeList({ employees, setEmployees }) {
       <SearchFilter search={search} setSearch={setSearch} filter={filter} setFilter={setFilter} />
 
       {!showForm && (
-        <button onClick={() => setShowForm(true)}>➕ Add Employee</button>
+        <button onClick={() => setShowForm(true)}> Add Employee</button>
       )}
 
       {showForm && (
         <EmployeeForm
           onSubmit={handleAddOrUpdate}
-          initialData={editing}   // ✅ send editing data
+          initialData={editing}   
           onCancel={() => {
             setEditing(null);
             setShowForm(false);

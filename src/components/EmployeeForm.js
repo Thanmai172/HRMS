@@ -1,4 +1,3 @@
-// src/components/EmployeeForm.jsx
 import React, { useState, useEffect } from "react";
 
 function EmployeeForm({ onSubmit, initialData, onCancel }) {
@@ -10,7 +9,7 @@ function EmployeeForm({ onSubmit, initialData, onCancel }) {
     role: "",
     dateOfJoining: "",
     status: "Active",
-    photo: "", // ⬅️ new
+    photo: "", 
   });
 
   useEffect(() => {
@@ -27,7 +26,7 @@ function EmployeeForm({ onSubmit, initialData, onCancel }) {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setForm({ ...form, photo: reader.result }); // base64 preview
+        setForm({ ...form, photo: reader.result }); 
       };
       reader.readAsDataURL(file);
     }
@@ -41,7 +40,6 @@ function EmployeeForm({ onSubmit, initialData, onCancel }) {
     }
     onSubmit({ ...form, id: Number(form.id) });
 
-    // reset
     setForm({
       id: "",
       name: "",

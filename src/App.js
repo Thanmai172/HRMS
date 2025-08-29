@@ -1,12 +1,11 @@
-// src/App.js
 import React, { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import EmployeeList from "./pages/EmployeeList";
 import EmployeeDetail from "./pages/EmployeeDetail";
-import Home from "./pages/Home"; // ✅ still keeping Home
+import Home from "./pages/Home";
 
 function App() {
-  const [employees, setEmployees] = useState([]); // ⬅️ empty initially
+  const [employees, setEmployees] = useState([]); 
 
   return (
     <div className="app-container">
