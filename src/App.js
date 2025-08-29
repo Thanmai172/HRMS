@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React, { useState } from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import EmployeeList from "./pages/EmployeeList";
+import EmployeeDetail from "./pages/EmployeeDetail";
+import Home from "./pages/Home"; // ✅ still keeping Home
 
 function App() {
+  const [employees, setEmployees] = useState([]); // ⬅️ empty initially
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <nav className="navbar">
+        <Link to="/">Home</Link>
+        <Link to="/employees">Employee List</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/employees"
+          element={<EmployeeList employees={employees} setEmployees={setEmployees} />}
+        />
+        <Route
+          path="/employee/:id"
+          element={<EmployeeDetail employees={employees} />}
+        />
+      </Routes>
     </div>
   );
 }
